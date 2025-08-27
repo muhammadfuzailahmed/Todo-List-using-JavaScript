@@ -98,3 +98,15 @@ li.completed {
     text-decoration: line-through;
 }
 
+@media screen and (max-width: 768px) {
+    .box {
+    width: 80vw;
+    height: 65vh;
+    border: 2px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+}
+}
