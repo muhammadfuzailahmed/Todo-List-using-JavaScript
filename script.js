@@ -38,21 +38,24 @@ function addTask(task) {
     li.style.cursor = "pointer";
     li.style.padding = "5px"
     li.style.borderBottom = "1px solid #000"
-    li.innerHTML = `
-    <span>${task.goalText}</span>
-    <button>Delete</button>
-    `
+    const input = document.createElement('input')
+    input.type = "checkbox";
+    const deletebtn = document.createElement('button');
+    deletebtn.textContent = "Delete";
+    const textSpan = document.createElement("span");
+    textSpan.textContent = " " + task.goalText;
+    li.appendChild(input);
+    li.appendChild(textSpan);
+    li.appendChild(deletebtn);
     ul.appendChild(li);
-    li.addEventListener('click', () => {
-        task.isCompleted = !task.isCompleted;
-        if(task.isCompleted) {
-            li.classList.add("completed")
-            li.remove();
+    input.addEventListener('click', () => {
+        if(input.checked) {
+            li.classList.add('completed')
         }else {
-            li.classList.remove("completed")
+            li.classList.remove('completed')
         }
     })
-    li.querySelector('button').addEventListener('click',() => {
+    deletebtn.addEventListener('click',() => {
       tasks = tasks.filter(t => t.id !== task.id)
       saveTask();
       li.remove();
