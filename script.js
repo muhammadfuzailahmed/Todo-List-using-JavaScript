@@ -51,8 +51,12 @@ function addTask(task) {
     input.addEventListener('click', () => {
         if(input.checked) {
             li.classList.add('completed')
+            task.isCompleted = true;
+            saveTask();
         }else {
             li.classList.remove('completed')
+            task.isCompleted = false;
+            saveTask();
         }
     })
     deletebtn.addEventListener('click',() => {
